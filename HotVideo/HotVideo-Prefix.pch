@@ -1,0 +1,44 @@
+//
+//  PrefixHeader.pch
+//  HotVideo
+//
+//  Created by Vinh Nguyen on 3/28/15.
+//  Copyright (c) 2015 Vinh Nguyen. All rights reserved.
+//
+#import "AppDelegate.h"
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "Constant.h"
+#import "Utils.h"
+#endif
+
+#ifdef DEBUG
+#define DLog(fmt, ...) NSLog((@"[%d] %s " fmt), __LINE__, __PRETTY_FUNCTION__, ##__VA_ARGS__)
+#else
+#define DLog( s, ... )
+#endif
+
+#ifndef HotVideo_Prefix_pch
+#define HotVideo_Prefix_pch
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif
+
+#define kApplicationDelegate			(AppDelegate *)[[UIApplication sharedApplication] delegate]
+
+#define SAFE_RELEASE_OBJECT(p)				{ if (p) { (p) = nil;  } }
+#define SAFE_RELEASE_VIEW(p)                { if (p) { [(p) removeFromSuperview]; (p) = nil;  } }
+#define SAFE_RELEASE_ARRAY(p)               { if (p) { [(p) removeAllObjects]; (p) = nil;  } }
+
+#define keBundle_LoadFile					[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent
+#define kScreenSize [UIScreen mainScreen].bounds.size
+#define kScreenHigh [UIScreen mainScreen].bounds.size.height
+
+#define kAPIKey     @"AIzaSyCFbvv5M_Y_La0NJdneRe1HxUf_L2PVBTU"
+#define kBaseURL    @"https://www.googleapis.com/youtube/v3/"
+#define kNumberItemPerPage  50
+#define kNumberItemCarousel  10
